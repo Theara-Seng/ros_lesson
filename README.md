@@ -1,5 +1,9 @@
 # ROS Lesson
 
+<!--img src="https://github.com/Theara-Seng/ros_lesson/tree/commands/image/ros_noetic.png" width="100" height="100"-->
+
+![My Image](image/ros_noetic.png)
+
 * ### Go to linux_command folder and understand the basic command of linux
 
 * ### Go to ROS_Installation and install the ROS Noetic on UBUNTU 20.04

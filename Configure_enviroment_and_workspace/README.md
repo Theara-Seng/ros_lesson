@@ -1,6 +1,6 @@
 # Create a ROS Workspace
 
-## create a folder name -> it can be anyname but using catkin_ws is recommended for beginner
+## Create a folder name -> it can be anyname but using catkin_ws is recommended for beginner
 
 * create a folder name catkin_ws with src directory element
 
@@ -41,6 +41,20 @@ gedit ~/.bashrc
 source /opt/ros/noetic/setup.bash
 source ~/catkin_ws/devel/setup.bash
 ```
+# Creating a ROS Package
+* First we need to get into the src folder of the catkin_ws
+```sh
+cd catkin_ws/src/
+```
 
+* We create a package and the dependencies that will have in the package
 
+```sh
+catkin_create_pkg [package_name] [depend1] [depend2] [depend3]
+```
+* For example:
+
+```sh
+catkin_create_pkg ros_tutorial std_msgs roscpp rospy
+```
 

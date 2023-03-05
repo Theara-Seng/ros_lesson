@@ -22,3 +22,51 @@ The basic concepts in this level are noeds, the master, Parameter Server, messag
 * **Parameter Server** gives us the possibility of using keys to store data in a central location. With this parameter, it is possible to configure nodes while it's running or to change the working of the nodes.
 
 * **Bags** are a format to save and play back the ROS message data. Bags are an important mechanism to store data, such as sensor data, that can be difficult to collect but is necessary to develop and test algorithm. You will use bags a log while working with complex robot.
+
+## NODES
+
+* Nodes are executables that can commincate with other porcesses using topics, sevives, or the Parameter Server. Using nodes in ROS provides us with fault tolerance and separates the code and functionalities, making the system simpler.
+
+* A node must have a unique name in the system. THis name is used to permit the node to communicate with another node using its name.  A node can be written using different libraries, such as **roscpp** and **rospy**. **roscpp** is for C++ and **rospy** is for Python.
+
+* ROS has tools to handle nodes and give us information about it, such as **rosnode**, which is a command-line tool used to display information about nodes, such as listing the currently running nodes. 
+
+* The supported commands are as follows:
+  * **rosnode info** Node: This prints information about a node.
+  * **rosnode kill** Node: This kills a runing node or sends a given signal 
+  * **rosnode list** Node: This lists the active nodes
+  
+ ### Example
+ 
+ * Open a new terminal and run the master 
+ 
+ ```sh
+ roscore
+ ```
+ 
+ * Then run the turtlesim node
+ 
+ ```sh
+ rosrun turtlesim turtlesim_node
+ ```
+ 
+ * Then the turtlesim GUI should show up with a turble bot in it. and we can display the node by calling 
+ 
+ ```sh
+ rosnode list
+ ```
+ This will display the node list of the turtlesim
+ 
+ * Then running the info
+ 
+ ```sh
+ rosnode info
+ ```
+ This will list all the publisher and subscriber that the turtle sim has
+ 
+ * If we want to kill the node of the turtlesim we can do
+ 
+ ```sh
+ rosnode kill [node_name]
+ ```
+ This will kill the node name.

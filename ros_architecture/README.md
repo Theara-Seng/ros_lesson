@@ -14,3 +14,11 @@ The basic concepts in this level are noeds, the master, Parameter Server, messag
 * **The master**: The master provides the registration of names and the lookup service to the rest of the nodes. It is also sets up connections between the nodes. If you don't have it in your system, you can't communicate with nodes, services, messages, and other. 
 
 * **Topics**: Each message must have a name to be routed by the ROS network. When a node is sending data, we say that the node is publishing a topic. Nodes can receive topics from other nodes simply by subscribing to the topic. A node can subscribe to a topic.
+
+* **Messages** Nodes communicate with each other through messages. A message contains data that send information to other nodes. ROS has many types of messages, and you can also develop your own type of message using standard messages.
+
+* **Services**: When you publish topics, you are sending data in a many-to-many fashion, but when you need a request or an answer from a nod, you can't do it with topics. Services give us the possibility of interacting with nodes. Also services must have a unique name. When a node has a service, all the nodes can communicate with it, thanks to ROS client Library.
+
+* **Parameter Server** gives us the possibility of using keys to store data in a central location. With this parameter, it is possible to configure nodes while it's running or to change the working of the nodes.
+
+* **Bags** are a format to save and play back the ROS message data. Bags are an important mechanism to store data, such as sensor data, that can be difficult to collect but is necessary to develop and test algorithm. You will use bags a log while working with complex robot.

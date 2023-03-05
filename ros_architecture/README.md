@@ -70,3 +70,69 @@ The basic concepts in this level are noeds, the master, Parameter Server, messag
  rosnode kill [node_name]
  ```
  This will kill the node name.
+
+### Create your own rospy ndoe
+
+* In here we will create a rospy node to interact with another node. But first we need to create a package
+
+-Go to ~/catkin_ws/src by:
+```sh
+cd catkin_ws/src
+```
+
+* The we create a new package call ros_test by:
+
+```sh
+catkin_create_pkg ros_test rospy
+```
+* Then 
+```sh
+cd ..
+```
+* and run:
+```sh
+catkin_make
+```
+
+* Afterthat we can go to the ros_test package
+```sh
+roscd ros_test
+```
+*  and create new folder name script:
+
+```sh
+mkdir script
+```
+
+* Go to the folder script and create a python file call node_test.py by:
+```sh
+touch node_test.py
+```
+
+* Then we need to make it executable by chmod 
+
+```sh
+chmod +x node_test.py
+```
+
+* Then edit the file noed_test.py by running:
+
+```sh
+gedit node_test.py
+```
+
+* and pass this code 
+
+```sh
+#!/usr/bin/env python3
+import rospy
+
+rospy.init_node('node1')
+
+rate = rospy.Rate(2)
+
+while not rospy.is_shutdown():
+
+	rate.sleep()
+```
+

@@ -136,3 +136,62 @@ while not rospy.is_shutdown():
 	rate.sleep()
 ```
 
+## Topics 
+
+Topics are buses used by nodes to transmit data. Topics can be transmitted without a direct connection between nodes, which mean that the production and consumption of data are decoupled. A topic can have various subscribers and can also have various publishers, but you can take care about publisheing the same topic with differrent nodes because it can create conflicts.
+
+ROS has a tool to work with topics called **rostopic**. It is a command-line tool that gives us information about the topic or publises data directly on the network.
+
+This tool has the following parameter:
+
+* **rostopic bw /topic**: This display the bandwidth used by the topic.
+* **rostopic echo /topic**: This print messages to the screen
+* **rostopic find message_type**: This find topics by their type
+* **rostopic info /topic**: This print information about the active topic, topics published, and services
+* **rostopic list**: This prints information baout active topics
+* **rostopic pub** /topic type args**: This publises data to the topic. It allows us to create and publish data in whatever topic we want, directly from the command-line
+
+### Example 
+
+* Run the turtlesim node
+
+```sh
+rosrun turtlesim turtlesim_node
+```
+
+* Then open a new terminal and run:
+
+```sh
+rostopic list
+```
+This will list all topic about the turtlesim node
+
+* Then run:
+
+```sh
+rostopic echo /turtle1/pose
+```
+This will display the turtlesim position as well as the velocity
+
+### Message 
+
+A node sends information to another node using messages that are published by topics. The message has a simple structure that uess standard tupes or types developed by the user.
+
+ROS has the **rosmsg** command-line tool to get information about messages. THe accepted parameters are follow
+
+* **rosmsg show**: This diplays the fiels of a message
+
+* **rosmsg list**: This list all messages
+
+* **rosmsg package**: This lists all the messages in a package
+
+* **rosmsg packages**: This lists all of the packages that have the message
+
+
+
+### Create your own topic 
+
+#### Topic Publisher
+
+
+

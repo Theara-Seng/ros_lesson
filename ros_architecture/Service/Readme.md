@@ -49,7 +49,23 @@ To invoke a service, you will use
 rosservice call /reset
 ```
 
+**Services** in ROS are commonly used to:
+ * Trigger some start of an event via the funtion body
+ * Perform some calculation based on input parameters, and return the result
+ * Avoid repeated code, especially for freatures that are used by many nodes
+
+There are some function that you need to understand in Service:
+
+**Server** is the node that host the service 
+
+**client** is the node that is calling the service
+
+**request** is the input of the service 
+
+**response** is the output of a service
+
 ## Create your own service
+
 
 Create a new folder in your package:
 ```sh
@@ -111,6 +127,7 @@ if __name__ == "__main__":
     rospy.loginfo("Ready to add two ints.")
     rospy.spin()
  ```
+
  After this we need to do the catkin_make in the catkin_ws and also source file
 
 Then we can run the rosmaster:

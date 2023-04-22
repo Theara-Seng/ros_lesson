@@ -73,3 +73,96 @@ int64 first
 int64 second
 int64 sum
 ```
+
+And we also need to configue the CMakeLists.txt in the line Generate services with:
+
+```sh
+ add_service_files(
+   FILES
+   sum2int.srv
+ )
+ ```
+ 
+ ### Create a service node
+ 
+ we create a node name service_node.py in the folder script and add the following code:
+ 
+ ```sh
+#!/usr/bin/env python3
+
+import rospy
+from lab1.srv import *
+
+def service_callback(req):
+    ans = req.first + req.second
+
+    rospy.loginfo("Received [%s, %s], returning %s"%
+                                (req.first, req.second, ans))
+
+    resp = sum2intResponse()
+    resp.sum = ans
+    return resp
+
+if __name__ == "__main__":
+
+    rospy.init_node('sum2int')
+    rospy.Service('sum2int', sum2int, service_callback)
+
+    rospy.loginfo("Ready to add two ints.")
+    rospy.spin()
+ ```
+ After this we need to do the catkin_make in the catkin_ws and also source file
+
+Then we can run the rosmaster:
+
+```sh
+roscore
+```
+and run the service node:
+
+```sh
+rosrun lab1 service_node.py
+```
+
+Then run :
+
+```sh
+ rosservice call /sum2int "first: 2
+second: 2"
+```
+
+Then you can see the response from the service is 4.
+
+### Create a client node
+
+we create a client node with the following:
+
+
+```sh
+#!/usr/bin/env python3
+
+import rospy, random
+from lab1.srv import *
+
+if __name__ == "__main__":
+    rospy.init_node('client_node')
+
+    calc_client = rospy.ServiceProxy('sum2int', sum2int)
+
+    r = rospy.Rate(1)
+
+    while not rospy.is_shutdown():
+        a = random.randint(1, 10)
+        b = random.randint(1, 10)
+
+        rospy.loginfo("Generated [%d, %d], sending addition request..." % (a, b))
+
+        req = sum2intRequest()
+        req.first = a
+        req.second = b
+
+        resp = calc_client(req)
+        rospy.loginfo("Received response: %d" % resp.sum)
+
+        r.sleep()
+```

@@ -49,3 +49,27 @@ To invoke a service, you will use
 rosservice call /reset
 ```
 
+## Create your own service
+
+Create a new folder in your package:
+```sh
+mkdir srv
+```
+Then in create a new service in the folder srv
+
+```
+touch sum2int.srv
+```
+
+Then chmod in the terminal:
+
+```
+chmod +x sum2int.srv
+```
+and create a service message
+
+```
+int64 first
+int64 second
+int64 sum
+```
